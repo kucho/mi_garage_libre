@@ -5,9 +5,8 @@ source "https://rubygems.org"
 ruby file: "mise.toml"
 
 gem "bootsnap", require: false
-gem "cssbundling-rails"
 gem "image_processing", "~> 1.2"
-gem "jsbundling-rails"
+gem "inertia_rails"
 gem "kamal", require: false
 gem "pg", "~> 1.1"
 gem "propshaft"
@@ -18,6 +17,7 @@ gem "solid_cache"
 gem "solid_queue"
 gem "thruster", require: false
 gem "tzinfo-data", platforms: [:windows, :jruby]
+gem "vite_rails"
 
 group :development, :test do
   gem "bundler-audit", require: false

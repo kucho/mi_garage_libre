@@ -4,6 +4,8 @@ require_relative "boot"
 
 require "rails/all"
 
+require_relative "../lib/middleware/chrome_devtools"
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -23,10 +25,13 @@ module MiGarageLibre
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "UTC"
+
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.middleware.use(Middleware::ChromeDevtools)
   end
 end
