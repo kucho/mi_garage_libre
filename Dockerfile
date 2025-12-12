@@ -32,13 +32,21 @@ FROM base AS build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-  apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config unzip && \
+  apt-get install --no-install-recommends -y git ca-certificates build-essential git libpq-dev libyaml-dev pkg-config unzip && \
   rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-ENV BUN_INSTALL=/usr/local/bun
-ENV PATH=/usr/local/bun/bin:$PATH
-ARG BUN_VERSION=1.3.3
-RUN curl -fsSL https://bun.sh/install | bash -s -- "bun-v${BUN_VERSION}"
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+ENV MISE_DATA_DIR="/mise"
+ENV MISE_CONFIG_DIR="/mise"
+ENV MISE_CACHE_DIR="/mise/cache"
+ENV MISE_INSTALL_PATH="/usr/local/bin/mise"
+ENV PATH="/mise/shims:$PATH"
+
+RUN curl https://mise.run | sh
+RUN echo 'eval "$(/usr/local/bin/mise activate bash)"' >> /root/.bashrc
+COPY mise.toml ./
+RUN mise trust && mise install bun
 
 # Install application gems
 COPY Gemfile Gemfile.lock vendor ./
