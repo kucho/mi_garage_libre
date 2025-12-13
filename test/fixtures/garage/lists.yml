@@ -1,0 +1,6 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+doggy_stuff:
+  name: Doggy Stuff
+  description: Only for dog lovers
+  owner: ari

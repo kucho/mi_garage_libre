@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_13_034255) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_13_041915) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_catalog.plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_13_034255) do
     t.check_constraint "email ~ '^[^,;@ \r\n]+@[^,@; \r\n]+.[^,@; \r\n]+$'::citext", name: "valid_email"
   end
 
+  create_table "garage_lists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name", null: false
+    t.bigint "owner_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_garage_lists_on_owner_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
@@ -60,5 +69,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_13_034255) do
   add_foreign_key "account_password_reset_keys", "accounts", column: "id"
   add_foreign_key "account_remember_keys", "accounts", column: "id"
   add_foreign_key "account_verification_keys", "accounts", column: "id"
+  add_foreign_key "garage_lists", "profiles", column: "owner_id"
   add_foreign_key "profiles", "accounts"
 end
