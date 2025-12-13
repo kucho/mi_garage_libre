@@ -15,6 +15,7 @@ gem "pg", "~> 1.1"
 gem "propshaft"
 gem "puma", ">= 5.0"
 gem "rails", "~> 8.1.1"
+gem "resend"
 gem "rodauth-i18n"
 gem "rodauth-rails"
 gem "sequel-activerecord_connection", require: false
