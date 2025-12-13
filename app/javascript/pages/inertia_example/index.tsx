@@ -1,5 +1,6 @@
 import { Head } from "@inertiajs/react";
 import { version as react_version } from "react";
+import { Button } from "@/components/ui/button";
 import inertiaSvg from "/assets/inertia.svg";
 import railsSvg from "/assets/rails.svg";
 import reactSvg from "/assets/react.svg";
@@ -43,6 +44,8 @@ export default function InertiaExample({
 					/>
 				</a>
 			</nav>
+
+			<Button>Click me!</Button>
 
 			<div className={cs.footer}>
 				<div className={cs.card}>
