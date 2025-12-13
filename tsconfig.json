@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
-		"baseUrl": "app/javascript",
+		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./*"]
+			"@/*": ["./app/javascript/*"]
 		}
 	},
 	"files": [],
