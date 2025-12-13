@@ -1,6 +1,6 @@
 import { Head } from "@inertiajs/react";
 import { version as react_version } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/retroui/Button";
 import inertiaSvg from "/assets/inertia.svg";
 import railsSvg from "/assets/rails.svg";
 import reactSvg from "/assets/react.svg";
