@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ari:
+  account: ari
+  handle: aricita
+  first_name: Ari
+  last_name: Nagaki
+
+lily:
+  account: lily
+  handle: riri
+  first_name: Lily
+  last_name: Rodriguez
