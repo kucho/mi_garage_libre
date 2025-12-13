@@ -27,15 +27,19 @@ gem "vite_rails"
 group :development, :test do
   gem "bundler-audit", require: false
   gem "debug", platforms: [:mri, :windows], require: "debug/prelude"
+end
+
+group :development do
+  gem "letter_opener_web"
   gem "rubocop-minitest", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rake", require: false
   gem "rubocop-shopify", require: false
   gem "rubocop-thread_safety", require: false
+  gem "web-console"
 end
 
-group :development do
-  gem "letter_opener_web"
-  gem "web-console"
+group :test do
+  gem "minitest-rails"
 end
