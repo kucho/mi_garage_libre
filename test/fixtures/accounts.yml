@@ -1,0 +1,10 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+ari:
+  email: ari@arialy.pe
+  password_hash: <%= RodauthApp.rodauth.allocate.password_hash("password") %>
+  status: verified
+
+lily:
+  email: lily@arialy.pe
+  password_hash: <%= RodauthApp.rodauth.allocate.password_hash("password") %>
+  status: verified
