@@ -4,3 +4,7 @@ doggy_stuff:
   name: Doggy Stuff
   description: Only for dog lovers
   owner: ari
+
+lily_secret_list:
+  name: Lily's Secret List
+  owner: lily

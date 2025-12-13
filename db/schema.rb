@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_13_151219) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_13_153603) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_catalog.plpgsql"
@@ -44,6 +44,18 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_13_151219) do
     t.string "status", default: "unverified", null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true, where: "((status)::text = ANY ((ARRAY['unverified'::character varying, 'verified'::character varying])::text[]))"
     t.check_constraint "email ~ '^[^,;@ \r\n]+@[^,@; \r\n]+.[^,@; \r\n]+$'::citext", name: "valid_email"
+  end
+
+  create_table "garage_list_items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "creator_id", null: false
+    t.text "description"
+    t.bigint "list_id", null: false
+    t.string "state"
+    t.string "title"
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_garage_list_items_on_creator_id"
+    t.index ["list_id"], name: "index_garage_list_items_on_list_id"
   end
 
   create_table "garage_lists", force: :cascade do |t|
@@ -80,6 +92,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_13_151219) do
   add_foreign_key "account_password_reset_keys", "accounts", column: "id"
   add_foreign_key "account_remember_keys", "accounts", column: "id"
   add_foreign_key "account_verification_keys", "accounts", column: "id"
+  add_foreign_key "garage_list_items", "garage_lists", column: "list_id"
+  add_foreign_key "garage_list_items", "profiles", column: "creator_id"
   add_foreign_key "garage_lists", "profiles", column: "owner_id"
   add_foreign_key "garage_memberships", "garage_lists", column: "list_id"
   add_foreign_key "garage_memberships", "profiles"

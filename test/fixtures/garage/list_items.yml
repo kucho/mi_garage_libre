@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+doggy_stuff_ball:
+  list: doggy_stuff
+  creator: lily
+  title: Red Ball
+  description: My favorite toy
+  state: available
+
+doggy_stuff_bone:
+  list: doggy_stuff
+  creator: lily
+  title: Puppy Chew Bone
+  description: Best toy for dogs
+  state: available

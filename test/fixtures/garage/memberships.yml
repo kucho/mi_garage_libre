@@ -1,11 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-ari:
+doggy_stuff_owner_ari:
   list: doggy_stuff
   profile: ari
   role: owner
 
-lily:
+doggy_stuff_admin_lily:
   list: doggy_stuff
   profile: lily
   role: admin
+
+lily_secret_list_owner_lily:
+  list: lily_secret_list
+  profile: lily
+  role: owner

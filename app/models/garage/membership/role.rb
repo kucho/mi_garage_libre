@@ -15,20 +15,4 @@ module Garage::Membership::Role
       super || owner?
     end
   end
-
-  def can_change?(other)
-    (admin? && !other.owner?) || other == self
-  end
-
-  def can_administer?(other)
-    admin? && !other.owner? && other != self
-  end
-
-  def can_administer_list?(list)
-    admin? || board.owner == self
-  end
-
-  # def can_administer_item?(item)
-  #   admin? || item.creator == self
-  # end
 end
