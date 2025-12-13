@@ -14,7 +14,8 @@
 				"useSortedProperties": "on"
 			}
 		},
-		"enabled": true
+		"enabled": true,
+		"includes": ["**", "!app/javascript/types/serializers/**/*"]
 	},
 	"css": {
 		"formatter": {
@@ -32,6 +33,7 @@
 	},
 	"formatter": {
 		"enabled": true,
+		"includes": ["**", "!app/javascript/types/serializers/**/*"],
 		"indentStyle": "tab"
 	},
 	"javascript": {
@@ -41,6 +43,7 @@
 	},
 	"linter": {
 		"enabled": true,
+		"includes": ["**", "!app/javascript/types/serializers/**/*"],
 		"rules": {
 			"recommended": true
 		}

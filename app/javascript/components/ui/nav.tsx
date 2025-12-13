@@ -1,4 +1,9 @@
+import { usePage } from "@inertiajs/react";
+import { Text } from "@/components/retroui/Text";
+
 export function Nav() {
+	const { auth } = usePage().props;
+
 	return (
 		<nav className="border-black bg-white sticky top-0 border-b-2 z-10">
 			<div className="container max-w-6xl mx-auto max-lg:px-4 py-4 flex justify-between items-center">
@@ -49,22 +54,27 @@ export function Nav() {
 					</div>
 				</div>
 				<div className="hidden lg:flex items-center space-x-4">
-					<a href="/login">
-						<button
-							className="font-head outline-hidden rounded-md cursor-pointer flex justify-center items-center shadow-md hover:shadow-xs bg-background text-black border-2 border-black transition-all hover:translate-y-1 px-4 py-1 text-sm"
-							type="button"
-						>
-							Sign in
-						</button>
-					</a>
-					<a href="/create-account">
-						<button
-							className="font-head outline-hidden rounded-md cursor-pointer flex justify-center items-center shadow-md hover:shadow-xs bg-primary text-black border-2 border-black hover:bg-primary-hover transition-all hover:translate-y-1 px-4 py-1 text-sm"
-							type="button"
-						>
-							Access Now
-						</button>
-					</a>
+					{!auth.profile && (
+						<>
+							<a href="/login">
+								<button
+									className="font-head outline-hidden rounded-md cursor-pointer flex justify-center items-center shadow-md hover:shadow-xs bg-background text-black border-2 border-black transition-all hover:translate-y-1 px-4 py-1 text-sm"
+									type="button"
+								>
+									Sign in
+								</button>
+							</a>
+							<a href="/create-account">
+								<button
+									className="font-head outline-hidden rounded-md cursor-pointer flex justify-center items-center shadow-md hover:shadow-xs bg-primary text-black border-2 border-black hover:bg-primary-hover transition-all hover:translate-y-1 px-4 py-1 text-sm"
+									type="button"
+								>
+									Access Now
+								</button>
+							</a>
+						</>
+					)}
+					{auth.profile && <Text>Welcome {auth.profile.account.email}</Text>}
 				</div>
 			</div>
 		</nav>

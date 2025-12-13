@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PagesController < ApplicationController
+class PagesController < InertiaController
   def landing
     render(inertia: {})
   end

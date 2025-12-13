@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 class InertiaController < ApplicationController
-  inertia_share flash: -> { flash.to_hash }
+  include Alba::Inertia::Controller
+
+  inertia_share { SharedPropsSerializer.new(self).to_inertia }
 end

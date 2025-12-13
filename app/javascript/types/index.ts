@@ -1,8 +1,6 @@
-export type Flash = {
-	notice?: string;
-	alert?: string;
-};
+export * from "@/types/serializers";
 
-export type SharedProps = {
-	flash: Flash;
-};
+export interface Flash {
+	alert?: string;
+	notice?: string;
+}

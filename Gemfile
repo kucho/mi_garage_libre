@@ -4,6 +4,8 @@ source "https://rubygems.org"
 
 ruby file: "mise.toml"
 
+gem "alba"
+gem "alba-inertia"
 gem "bcrypt", require: false
 gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
@@ -21,6 +23,7 @@ gem "solid_cache"
 gem "solid_queue"
 gem "thruster", require: false
 gem "tilt", require: false
+gem "typelizer"
 gem "tzinfo-data", platforms: [:windows, :jruby]
 gem "vite_rails"
 
