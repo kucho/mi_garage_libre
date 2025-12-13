@@ -133,14 +133,19 @@ class RodauthMain < Rodauth::Rails::Auth
     # end
 
     # Perform additional actions after the account is created.
-    # after_create_account do
-    #   Profile.create!(account_id: account_id, name: param("name"))
-    # end
+    after_create_account do
+      Profile.create!(
+        account_id:,
+        first_name: param("first_name"),
+        last_name: param("last_name"),
+        handle: param("handle"),
+      )
+    end
 
     # Do additional cleanup after the account is closed.
-    # after_close_account do
-    #   Profile.find_by!(account_id: account_id).destroy
-    # end
+    after_close_account do
+      Profile.find_by!(account_id:).destroy
+    end
 
     # ==> Redirects
     # Redirect to home page after logout.
