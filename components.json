@@ -9,7 +9,8 @@
 	},
 	"iconLibrary": "lucide",
 	"registries": {
-		"@retroui": "https://retroui.dev/r/{name}.json"
+		"@retroui": "https://retroui.dev/r/{name}.json",
+		"@shadcn-editor": "https://shadcn-editor.vercel.app/r/{name}.json"
 	},
 	"rsc": false,
 	"style": "new-york",
