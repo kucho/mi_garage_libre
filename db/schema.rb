@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_13_041915) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_13_151219) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_catalog.plpgsql"
@@ -55,6 +55,17 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_13_041915) do
     t.index ["owner_id"], name: "index_garage_lists_on_owner_id"
   end
 
+  create_table "garage_memberships", force: :cascade do |t|
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.bigint "list_id", null: false
+    t.bigint "profile_id", null: false
+    t.string "role", default: "contributor", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_garage_memberships_on_list_id"
+    t.index ["profile_id"], name: "index_garage_memberships_on_profile_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
@@ -70,5 +81,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_13_041915) do
   add_foreign_key "account_remember_keys", "accounts", column: "id"
   add_foreign_key "account_verification_keys", "accounts", column: "id"
   add_foreign_key "garage_lists", "profiles", column: "owner_id"
+  add_foreign_key "garage_memberships", "garage_lists", column: "list_id"
+  add_foreign_key "garage_memberships", "profiles"
   add_foreign_key "profiles", "accounts"
 end

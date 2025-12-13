@@ -14,3 +14,6 @@ AllCops:
 
 Bundler/OrderedGems:
   Enabled: true
+
+Style/ClassAndModuleChildren:
+  Enabled: false
