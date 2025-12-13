@@ -31,7 +31,7 @@ void createInertiaApp({
 				eager: true,
 			},
 		);
-		const page = pages[`../pages/${name}.tsx`];
+		const page = pages[`../${name}.tsx`];
 		if (!page) {
 			console.error(`Missing Inertia page component: '${name}.tsx'`);
 		}
