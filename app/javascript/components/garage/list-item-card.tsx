@@ -1,5 +1,6 @@
 import type { GarageListItem } from "@/types/serializers";
 import { ImageIcon } from "lucide-react";
+import { DeleteItemDialog } from "@/components/garage/delete-item-dialog";
 import { EditItemDialog } from "@/components/garage/edit-item-dialog";
 
 interface ListItemCardProps {
@@ -19,7 +20,10 @@ export function ListItemCard({ item, listId, errors }: ListItemCardProps) {
 					<h3 className="font-head text-lg font-semibold truncate">
 						{item.title || "Untitled"}
 					</h3>
-					<EditItemDialog errors={errors} item={item} listId={listId} />
+					<div className="flex gap-1">
+						<EditItemDialog errors={errors} item={item} listId={listId} />
+						<DeleteItemDialog item={item} listId={listId} />
+					</div>
 				</div>
 				{item.description_plain && (
 					<p className="text-muted-foreground text-sm mt-2 line-clamp-3">

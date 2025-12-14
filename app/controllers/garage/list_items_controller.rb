@@ -3,7 +3,7 @@
 module Garage
   class ListItemsController < InertiaController
     before_action :set_list
-    before_action :set_item, only: [:update]
+    before_action :set_item, only: [:update, :destroy]
 
     def create
       item = @list.items.build(item_params)
@@ -22,6 +22,11 @@ module Garage
       else
         redirect_to(garage_list_url(@list), inertia: { errors: @item.errors })
       end
+    end
+
+    def destroy
+      @item.destroy
+      redirect_to(garage_list_url(@list))
     end
 
     private
