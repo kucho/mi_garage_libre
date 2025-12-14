@@ -74,7 +74,17 @@ export function Nav() {
 							</a>
 						</>
 					)}
-					{auth.profile && <Text>Welcome {auth.profile.account.email}</Text>}
+					{auth.profile && (
+						<>
+							<a
+								className="hover:underline decoration-primary-500"
+								href="/garage/lists"
+							>
+								My Lists
+							</a>
+							<Text>Welcome {auth.profile.account.email}</Text>
+						</>
+					)}
 				</div>
 			</div>
 		</nav>

@@ -31,7 +31,10 @@ void createInertiaApp({
 				eager: true,
 			},
 		);
-		const page = pages[`../${name}.tsx`];
+
+		const normalizedName = name.replace(/^pages\//, "");
+		const page = pages[`../pages/${normalizedName}.tsx`];
+
 		if (!page) {
 			console.error(`Missing Inertia page component: '${name}.tsx'`);
 		}
