@@ -21,9 +21,7 @@ export function Nav() {
 		<nav className="border-black bg-white sticky top-0 border-b-2 z-10">
 			<div className="container max-w-6xl mx-auto max-lg:px-4 py-4 flex justify-between items-center">
 				<a className="flex items-center space-x-2" href="/">
-					<div className="h-6 w-6 rounded-full border-2 border-black flex items-center justify-center">
-						<div className="h-2 w-1 bg-black transform rotate-45"></div>
-					</div>
+					<img src="/icon.svg" alt="MiGarage Logo" className="h-8 w-8" />
 					<p className="font-sans text-xl font-bold">MiGarage</p>
 					<span className="font-semibold rounded bg-black text-white px-2 py-1 text-xs">
 						Libre
