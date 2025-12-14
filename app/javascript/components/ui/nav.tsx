@@ -8,7 +8,11 @@ export function Nav() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
 	const handleLogout = () => {
-		router.post("/logout");
+		router.post("/logout", {
+			authenticity_token: document.querySelector<HTMLMetaElement>(
+				'meta[name="csrf-token"]',
+			)?.content,
+		});
 	};
 
 	const displayName =
@@ -21,7 +25,7 @@ export function Nav() {
 		<nav className="border-black bg-white sticky top-0 border-b-2 z-10">
 			<div className="container max-w-6xl mx-auto max-lg:px-4 py-4 flex justify-between items-center">
 				<a className="flex items-center space-x-2" href="/">
-					<img src="/icon.svg" alt="MiGarage Logo" className="h-8 w-8" />
+					<img alt="MiGarage Logo" className="h-8 w-8" src="/icon.svg" />
 					<p className="font-sans text-xl font-bold">MiGarage</p>
 					<span className="font-semibold rounded bg-black text-white px-2 py-1 text-xs">
 						Libre
