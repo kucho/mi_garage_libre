@@ -21,6 +21,7 @@ function ToggleGroup({
 	variant,
 	size,
 	spacing = 0,
+	rovingFocus = false,
 	children,
 	...props
 }: React.ComponentProps<typeof ToggleGroupPrimitive.Root> &
@@ -37,6 +38,7 @@ function ToggleGroup({
 			data-slot="toggle-group"
 			data-spacing={spacing}
 			data-variant={variant}
+			rovingFocus={rovingFocus}
 			style={{ "--gap": spacing } as React.CSSProperties}
 			{...props}
 		>

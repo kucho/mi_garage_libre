@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   namespace :garage do
-    resources :lists, only: [:index, :show, :create]
+    resources :lists, only: [:index, :show, :create] do
+      resources :items, only: [:create], controller: "list_items"
+    end
   end
 
   # Defines the root path route ("/")

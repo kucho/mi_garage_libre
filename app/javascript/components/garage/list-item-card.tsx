@@ -15,9 +15,9 @@ export function ListItemCard({ item }: ListItemCardProps) {
 				<h3 className="font-head text-lg font-semibold truncate">
 					{item.title || "Untitled"}
 				</h3>
-				{item.description && (
+				{item.description_plain && (
 					<p className="text-muted-foreground text-sm mt-2 line-clamp-3">
-						{item.description}
+						{item.description_plain}
 					</p>
 				)}
 				<div className="flex items-center gap-2 mt-3 text-xs text-muted-foreground">

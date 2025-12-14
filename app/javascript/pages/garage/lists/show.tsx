@@ -2,15 +2,16 @@ import type { GarageList, GarageListItem } from "@/types/serializers";
 import { Link } from "@inertiajs/react";
 import { ArrowLeft } from "lucide-react";
 import { ListItemCard } from "@/components/garage/list-item-card";
-import { Button } from "@/components/retroui/Button";
+import { NewItemDialog } from "@/components/garage/new-item-dialog";
 import { Nav } from "@/components/ui/nav";
 
 interface Props {
 	list: GarageList;
 	items: GarageListItem[];
+	errors?: Record<string, string[]>;
 }
 
-export default function ListShow({ list, items }: Props) {
+export default function ListShow({ list, items, errors }: Props) {
 	return (
 		<>
 			<Nav />
@@ -30,7 +31,7 @@ export default function ListShow({ list, items }: Props) {
 								<p className="text-muted-foreground mt-1">{list.description}</p>
 							)}
 						</div>
-						<Button>Add Item</Button>
+						<NewItemDialog errors={errors} listId={list.id} />
 					</div>
 				</div>
 
