@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :profile, only: [:edit, :update]
+
   # Defines the root path route ("/")
   root "pages#landing"
 end

@@ -14,11 +14,9 @@ const Content = ({ className, ...props }: IMenuContent) => (
 	<DropdownMenu.Portal>
 		<DropdownMenu.Content
 			align="start"
-			className={cn(
-				"bg-white border-2 shadow-md absolute top-2 min-w-20",
-				className,
-			)}
+			className={cn("bg-white border-2 shadow-md min-w-20 z-50", className)}
 			side="bottom"
+			sideOffset={4}
 			{...props}
 		/>
 	</DropdownMenu.Portal>

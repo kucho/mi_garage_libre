@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_14_010212) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_14_020241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_catalog.plpgsql"
@@ -87,6 +87,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_14_010212) do
     t.string "last_name"
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_profiles_on_account_id"
+    t.index ["handle"], name: "index_profiles_on_handle", unique: true, where: "(handle IS NOT NULL)"
   end
 
   add_foreign_key "account_login_change_keys", "accounts", column: "id"

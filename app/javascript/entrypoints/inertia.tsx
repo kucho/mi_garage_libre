@@ -1,6 +1,14 @@
-import { createInertiaApp, type ResolvedComponent } from "@inertiajs/react";
+import type { ReactNode } from "react";
+import type { Flash } from "@/types";
+import {
+	createInertiaApp,
+	type ResolvedComponent,
+	router,
+} from "@inertiajs/react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { toast } from "sonner";
+import AppLayout from "@/layouts/AppLayout";
 
 void createInertiaApp({
 	defaults: {
@@ -39,16 +47,26 @@ void createInertiaApp({
 			console.error(`Missing Inertia page component: '${name}.tsx'`);
 		}
 
-		// To use a default layout, import the Layout component
-		// and use the following line.
+		// Set default layout
 		// see https://inertia-rails.dev/guide/pages#default-layouts
-		//
-		// page.default.layout ||= (page: ReactNode) => (<Layout>{page}</Layout>)
+		page.default.layout ||= (page: ReactNode) => <AppLayout>{page}</AppLayout>;
 
 		return page;
 	},
 
 	setup({ el, App, props }) {
+		router.on("success", (event) => {
+			const flash = event.detail.page.props.flash as Flash;
+
+			if (flash?.notice) {
+				toast.success(flash.notice);
+			}
+
+			if (flash?.alert) {
+				toast.error(flash.alert);
+			}
+		});
+
 		createRoot(el).render(
 			<StrictMode>
 				<App {...props} />

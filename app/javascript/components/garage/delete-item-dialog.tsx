@@ -47,10 +47,10 @@ export function DeleteItemDialog({ listId, item }: DeleteItemDialogProps) {
 							Cancel
 						</Button>
 						<Button
+							className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
 							disabled={processing}
 							onClick={handleDelete}
 							type="button"
-							className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
 						>
 							{processing ? "Deleting..." : "Delete"}
 						</Button>
