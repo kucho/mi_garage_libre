@@ -8,6 +8,15 @@ module Garage
       render(inertia: { lists: ListSerializer.new(lists) })
     end
 
+    def show
+      list = Current.profile.garage_lists.includes(:owner, items: :creator).find(params[:id])
+
+      render(inertia: {
+        list: ListSerializer.new(list),
+        items: ListItemSerializer.new(list.items),
+      })
+    end
+
     def create
       list = Current.profile.garage_lists.build(list_params)
 

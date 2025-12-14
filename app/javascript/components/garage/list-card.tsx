@@ -1,4 +1,5 @@
 import type { GarageList } from "@/types/serializers";
+import { Link } from "@inertiajs/react";
 import { Users } from "lucide-react";
 
 interface ListCardProps {
@@ -7,7 +8,10 @@ interface ListCardProps {
 
 export function ListCard({ list }: ListCardProps) {
 	return (
-		<div className="border-2 rounded-lg p-4 shadow-md bg-background hover:shadow-lg transition-shadow">
+		<Link
+			className="block border-2 rounded-lg p-4 shadow-md bg-background hover:shadow-lg transition-shadow"
+			href={`/garage/lists/${list.id}`}
+		>
 			<h3 className="font-head text-lg font-semibold truncate">{list.name}</h3>
 			{list.description && (
 				<p className="text-muted-foreground text-sm mt-1 line-clamp-2">
@@ -23,6 +27,6 @@ export function ListCard({ list }: ListCardProps) {
 					by {list.owner.handle || list.owner.account.email || "Unknown"}
 				</span>
 			</div>
-		</div>
+		</Link>
 	);
 }
