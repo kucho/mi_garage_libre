@@ -42,7 +42,12 @@ export default function ListShow({ list, items, errors }: Props) {
 				) : (
 					<div className="space-y-4">
 						{items.map((item) => (
-							<ListItemCard item={item} key={item.id} />
+							<ListItemCard
+								errors={errors}
+								item={item}
+								key={item.id}
+								listId={list.id}
+							/>
 						))}
 					</div>
 				)}

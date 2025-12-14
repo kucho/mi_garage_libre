@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   namespace :garage do
     resources :lists, only: [:index, :show, :create] do
-      resources :items, only: [:create], controller: "list_items"
+      resources :items, only: [:create, :update], controller: "list_items"
     end
   end
 
