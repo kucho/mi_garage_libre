@@ -3,13 +3,13 @@
 module Garage
   class ListsController < InertiaController
     def index
-      lists = Current.profile.garage_lists.includes(:owner, :memberships)
+      lists = Garage::List.accessible_by(Current.profile).includes(:owner, :memberships)
 
       render(inertia: { lists: ListSerializer.new(lists) })
     end
 
     def show
-      list = Current.profile.garage_lists.includes(:owner, items: :creator).find(params[:id])
+      list = Garage::List.accessible_by(Current.profile).includes(:owner, items: :creator).find(params[:id])
 
       render(inertia: {
         list: ListSerializer.new(list),

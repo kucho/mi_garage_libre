@@ -32,7 +32,7 @@ module Garage
     private
 
     def set_list
-      @list = Current.profile.garage_lists.find(params[:list_id])
+      @list = Garage::List.accessible_by(Current.profile).find(params[:list_id])
     end
 
     def set_item
