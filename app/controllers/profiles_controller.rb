@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ProfilesController < InertiaController
+  before_action :authenticate
+
   def edit
     render(inertia: { profile: ProfileSerializer.new(Current.profile) })
   end

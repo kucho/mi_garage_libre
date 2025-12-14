@@ -2,6 +2,8 @@
 
 module Garage
   class ListsController < InertiaController
+    before_action :authenticate
+
     def index
       lists = Garage::List.accessible_by(Current.profile).includes(:owner, :memberships)
 

@@ -2,6 +2,7 @@
 
 module Garage
   class ListItemsController < InertiaController
+    before_action :authenticate
     before_action :set_list
     before_action :set_item, only: [:update, :destroy]
 

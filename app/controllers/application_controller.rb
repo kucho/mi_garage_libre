@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def authenticate
+    rodauth.require_account # redirect to login page if not authenticated
+  end
+
   def set_current_request_details
     Current.profile = Profile.find_by(account: current_account) if current_account.present?
   end
